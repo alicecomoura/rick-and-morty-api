@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as S from './styles'
-import Slider from 'react-slick'
+import axios from "axios";
+//import Slider from 'react-slick'
 
 import rick from '../../assets/rick.jpg'
 import beth from '../../assets/beth.jpg'
@@ -9,33 +10,26 @@ import beth from '../../assets/beth.jpg'
 import jerry from '../../assets/jerry.jpg'
 import morty from '../../assets/morty.jpg'
 import summer from '../../assets/summer.jpg' */
-
-
 // const images = [rick, beth, jerry, morty, summer]
 
-interface CharacterProps {
-    InfoCharacter?: string,
-}
+const RickAndMortyApi = axios.create ({
+    baseURL: 'https://rickandmortyapi.com/api/character'
+});
 
-const Favorites: React.FC<CharacterProps> = (props) => {
+const Favorites = () => {
 
-  /*   const setting = {
-        infinite: true,
-        lazyLoad: true,
-        speed: 300,
-        slideToShow: 3,
-        centerMode: true,
-        centerPadding: 0,
-    } */
-    {/* <S.WrapFav>
-        <Slider>
-            {images.map((img, idx) =>{
-                <div>
-                    <img src={img} alt={img} />
-                </div>
-            })}
-        </Slider>
-    </S.WrapFav> */}
+        const [character, setCharacter] = useState([]);
+
+
+        useEffect(() => {
+            getRickAndMorty()
+        },[])
+        
+        const getRickAndMorty = async () => {
+            const response = await RickAndMortyApi.get('')
+            setCharacter(response.data.results)
+            console.log(character)
+        }
 
     return (
         <S.Container>
@@ -44,11 +38,12 @@ const Favorites: React.FC<CharacterProps> = (props) => {
             {/* box cards */}
             
             <S.BoxCard>
+
                 <S.Card>
                     <S.CharacterName>Rick Sanchez</S.CharacterName>
 
                     <S.BtnClose>x</S.BtnClose>
-                    
+
                     <S.BoxImg>
                     <S.CharacterImg 
                         src={rick}
