@@ -34,7 +34,7 @@ const Home = () => {
 
                 <S.BoxSearch>
                     <S.Search
-                        placeholder="Pesquisar: nome, genêro, especíe..."
+                        placeholder="Pesquisar: nome, gênero, espécie..."
                     
                     />
                 </S.BoxSearch>
