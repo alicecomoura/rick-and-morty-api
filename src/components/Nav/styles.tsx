@@ -10,14 +10,14 @@ export const Container = styled.header `
 export const Nav = styled.nav `
     max-width: 1846.28px;
     width: 80%;
-    height: 4rem;
+    height: 3rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
 `;
 
 export const Logo = styled.img `
-    width: 15%;
+    width: 10%;
 `
 
 export const Menu = styled.ul `
@@ -28,14 +28,15 @@ export const Menu = styled.ul `
     list-style: none;
 `;
 
-/* export const OptionMenu = styled(Link) `
+export const OptionMenu = styled(Link) `
+    font-family: 'Montserrat', sans-serif;
     color: #0fb0ca;
     font-weight: 500;
     cursor: pointer;
+    text-decoration: none;
 
     &:hover{
         color: #88c445;
-        font-weight: 600;
     }
-`; */
+`;
 

@@ -24,9 +24,9 @@ const Nav: React.FC<NavProps> = (props) => {
                 <S.Nav>
                     <S.Logo src={logo} />
                     <S.Menu>
-                        <Link to="/" >início</Link>
-                        <Link to="/pesquisar" >pesquisar</Link>
-                        <Link to="/minhalista" >minha lista</Link>
+                        <S.OptionMenu to="/" >início</S.OptionMenu>
+                        <S.OptionMenu to="/pesquisar" >pesquisar</S.OptionMenu>
+                        <S.OptionMenu to="/minhalista" >minha lista</S.OptionMenu>
                     </S.Menu>
                 </S.Nav>
             </S.Container>
