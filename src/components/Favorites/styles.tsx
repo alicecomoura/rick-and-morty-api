@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div `
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 3rem);
     display: flex;
     jsutify-content: center;
     align-items: center;
@@ -18,11 +18,28 @@ export const WrapFav = styled.div `
 
 export const BoxCard = styled.div `
     width: 100%;
-    display: flex;
-    `
+
+    .slick-slide {
+        margin: 3rem 0;
+    }
+
+    .slide {
+        transform: scale(0.8);
+        transition: transform 300ms;
+        opacity: 0.5;
+        display: flex;
+        justify-content: center;
+    }
+
+    .activeSlider {
+        transform: scale(1.05);
+        opacity: 1;
+        border: 3px solid #0fb0ca;;
+    }
+`
     
 export const Card = styled.div `
-    width: 25%;
+    width: 100%;
     min-height: 350px;
     background: #bdbebd;
     display: flex;
@@ -33,17 +50,14 @@ export const Card = styled.div `
     box-shadow: -1px 5px 23px 11px rgba(0,0,0,0.42);
     transition: 0.3s linear;
     position: relative;
-
-    &:hover{
-        transform: translateY(-15px);
-        box-shadow: 0 10px 10px 10px rgba(128, 128, 128, 0.2);
-    }
 `
 
 export const CharacterName = styled.p `
     font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
+    text-align: center;
+    padding: 0.2rem 0;
 `
 
 export const BtnClose = styled.button `
@@ -75,12 +89,25 @@ export const BoxImg = styled.figure `
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    margin: 1rem auto;
 `
 
 export const CharacterImg = styled.img `
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 `;
 
-export const BoxInfoCharacter = styled.div ``
+export const BoxInfoCharacter = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
 
-export const InfoCharacter = styled.p ``
+export const InfoCharacter = styled.p `
+    font-size: 1.2rem;
+
+    span{
+        font-weight: 700;
+    }
+`
