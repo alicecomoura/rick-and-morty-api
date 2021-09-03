@@ -51,6 +51,7 @@ const Favorites = () => {
         <S.Container>
             <S.WrapFav>
 
+                <S.TitleAboutInfoPag>Meus personagens favoritos</S.TitleAboutInfoPag>
                 {/* box cards */}
 
                 <S.BoxCard>

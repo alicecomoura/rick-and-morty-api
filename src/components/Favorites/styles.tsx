@@ -16,6 +16,13 @@ export const WrapFav = styled.div `
     //background: red;
 `
 
+export const TitleAboutInfoPag = styled.h2 `
+    font-family: 'Rubik', sans-serif;
+    font-size: 3rem;
+    color: #FFFF;
+    text-align: center;
+    text-shadow: 2px 2px 5px #000;
+`
 export const BoxCard = styled.div `
     width: 100%;
 
@@ -34,7 +41,7 @@ export const BoxCard = styled.div `
     .activeSlider {
         transform: scale(1.05);
         opacity: 1;
-        border: 3px solid #0fb0ca;;
+        border: 3px solid #0fb0ca;
     }
 `
     
@@ -50,6 +57,10 @@ export const Card = styled.div `
     box-shadow: -1px 5px 23px 11px rgba(0,0,0,0.42);
     transition: 0.3s linear;
     position: relative;
+
+    @media(max-width: 800px) {
+        min-height: 250px;
+    }
 `
 
 export const CharacterName = styled.p `
@@ -58,6 +69,10 @@ export const CharacterName = styled.p `
     font-weight: 800;
     text-align: center;
     padding: 0.2rem 0;
+
+    @media(max-width: 800px) {
+        font-size: 0.8rem;
+    }
 `
 
 export const BtnClose = styled.button `
@@ -90,6 +105,11 @@ export const BoxImg = styled.figure `
     align-items: center;
     overflow: hidden;
     margin: 1rem auto;
+
+    @media(max-width: 800px) {
+        width: 80px;
+        height: 80px;
+    }
 `
 
 export const CharacterImg = styled.img `
@@ -102,6 +122,10 @@ export const BoxInfoCharacter = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media(max-width: 800px) {
+        align-items: flex-start;
+    }
 `
 
 export const InfoCharacter = styled.p `
@@ -109,5 +133,10 @@ export const InfoCharacter = styled.p `
 
     span{
         font-weight: 700;
+    }
+
+    @media(max-width: 800px) {
+        font-size: 0.8rem;
+        padding-left: 1rem;
     }
 `

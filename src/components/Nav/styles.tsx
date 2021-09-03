@@ -8,7 +8,7 @@ export const Container = styled.header `
 `;
 
 export const Nav = styled.nav `
-    max-width: 1846.28px;
+    max-width: 1000px;
     width: 80%;
     height: 3rem;
     margin: 0 auto;
@@ -18,10 +18,15 @@ export const Nav = styled.nav `
 
 export const Logo = styled.img `
     width: 10%;
+    //height: 50px;
+
+    @media(max-width: 900px) {
+        width: 20%;
+    }
 `
 
 export const Menu = styled.ul `
-    width: 40%;
+    width: 60%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -31,12 +36,18 @@ export const Menu = styled.ul `
 export const OptionMenu = styled(Link) `
     font-family: 'Montserrat', sans-serif;
     color: #0fb0ca;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
 
     &:hover{
         color: #88c445;
+    }
+
+    @media(max-width: 900px) {
+        transition: 0.6s linear;
+        font-size: 0.6rem;
     }
 `;
 

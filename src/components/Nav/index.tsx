@@ -12,6 +12,7 @@ import * as S from './styles';
 import logo from '../../assets/logo.png'
 import Favorites from '../Favorites'
 import Home from '../Home'
+import Characters from '../Characters'
 
 interface NavProps {
     OptionMenu?: string,
@@ -25,8 +26,9 @@ const Nav: React.FC<NavProps> = (props) => {
                     <S.Logo src={logo} />
                     <S.Menu>
                         <S.OptionMenu to="/" >início</S.OptionMenu>
+                        <S.OptionMenu to="/personagens" >personagens</S.OptionMenu>
                         <S.OptionMenu to="/pesquisar" >pesquisar</S.OptionMenu>
-                        <S.OptionMenu to="/minhalista" >minha lista</S.OptionMenu>
+                        <S.OptionMenu to="/minhalista" >meus favoritos</S.OptionMenu>
                     </S.Menu>
                 </S.Nav>
             </S.Container>
@@ -38,6 +40,10 @@ const Nav: React.FC<NavProps> = (props) => {
 
                 <Route path="/pesquisar">
                     <Home />
+                </Route>
+
+                <Route path="/personagens">
+                    <Characters />
                 </Route>
 
                 <Route path="/">
