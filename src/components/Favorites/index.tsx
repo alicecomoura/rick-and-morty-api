@@ -9,6 +9,7 @@ const RickAndMortyApi = axios.create({
 });
 
 interface CharacterProps {
+    id: number,
     name: string,
     image: string,
     status: string,
@@ -23,8 +24,11 @@ const Favorites = () => {
 
     const [indexCards, setIndexCards] = useState(0)
 
+    let teste: CharacterProps[];
+
     useEffect(() => {
-        getRickAndMorty()
+        teste = JSON.parse(localStorage.getItem('CharacterFav') || '{}');
+        setCharacter(teste);
     }, [])
 
     const getRickAndMorty = async () => {
@@ -56,7 +60,7 @@ const Favorites = () => {
 
                 <S.BoxCard>
                     <Slider {...settings}>
-                        {character.map((item, index) =>
+                    {character.length > 0 && character.map((item, index) =>
                             <S.Card
                                 key={index}
                                 className={index === indexCards ? "slide activeSlider" : "slide"}

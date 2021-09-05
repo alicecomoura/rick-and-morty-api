@@ -119,69 +119,65 @@ export const Search = styled.input `
       }
 `
 
-export const BtnSerch = styled.button `
-      width: 20%;
-      border: none;
-      color: white;
-      font-weight: 500;
-      background: transparent;
-      border: 1px solid grey;
-      cursor: pointer;
-
-      &:hover{
-          background: grey;
-      }
-`
-
 // lista dos personagens 
 
 
 export const BoxCard = styled.div `
     width: 100%;
+    min-height: 300px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-
-    .slick-slide {
-        margin: 3rem 0;
-    }
-
-    .slide {
-        transform: scale(0.8);
-        transition: transform 300ms;
-        opacity: 0.5;
-        display: flex;
-        justify-content: center;
-    }
-
-    .activeSlider {
-        transform: scale(1.05);
-        opacity: 1;
-        border: 3px solid #0fb0ca;
-    }
+    align-items: center;
 `
     
 export const Card = styled.div `
-    width: 23%;
-    min-height: 350px;
-    margin-bottom: 2rem;
+    width: 250px;
+    min-height: 250px;
     background: #bdbebd;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     border-radius: 5px;
-    box-shadow: -1px 5px 23px 11px rgba(0,0,0,0.42);
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.42);
     transition: 0.3s linear;
     position: relative;
+    margin-bottom: 0.8rem;
+
+    transition: 0.2s linear;
+
+    &:hover {
+       transform: scale(1.025);
+    }
 `
 
 export const CharacterName = styled.p `
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     text-align: center;
     padding: 0.2rem 0;
+`
+
+export const BtnClose = styled.button `
+    width: 25px;
+    height: 25px;
+    color: #FFFF;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 2%;
+    right: 2%;
+
+    background: rgba(0,0,0,0.42);
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover{
+        background: green;
+    }
 `
 
 export const BoxImg = styled.figure `
@@ -193,7 +189,7 @@ export const BoxImg = styled.figure `
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    margin: 1rem auto;
+    margin: 0 auto;
 `
 
 export const CharacterImg = styled.img `
@@ -208,9 +204,36 @@ export const CharacterImg = styled.img `
 `;
 
 export const InfoCharacter = styled.p `
-    font-size: 1.2rem;
+    font-size: 0.8rem;
 
     span{
         font-weight: 700;
     }
+`
+
+export const Cards = styled.div `
+width: 100%;
+height: 280px;
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+overflow-y: scroll;
+
+h1 {
+    /* max- */width: 150px;
+    border: 1px solid pink; 
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+}
+` 
+
+export const BoxInfoCharacter = styled.div `
+display: flex;
+flex-direction: column;
+align-items: center;
+
+@media(max-width: 800px) {
+    align-items: flex-start;
+}
 `
