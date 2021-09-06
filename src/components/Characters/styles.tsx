@@ -62,36 +62,32 @@ export const BoxImg = styled.figure `
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     margin: 1rem auto;
     position: relative;
     transition: 0.3s;
-
+    
+    //overflow: hidden;
     &:hover{
         transform: scale(1.1);    }
 `
 
 export const CharacterImg = styled.img `
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    //height: 100%;
     object-fit: cover;
 `;
 
-export const BoxNameCharacter = styled.div `
-    width: 140px;
-    height: 140px;
-    font-size: 0.8rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+export const BoxCharacter = styled.div `
+    width: 150px;
+    height: 150px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 50%;
-    background: #88c445;;
+    justify-content: space-evenly;
+    //align-items: center;
+   border-radius: 5px;
+    background: #93bf85;;
     position: absolute;
-    top: 0;
+    top: -6%;
     opacity: 0;
     transition: 0.5s linear;
 
@@ -99,5 +95,19 @@ export const BoxNameCharacter = styled.div `
 
     &:hover{
         opacity: 1;
+    }
+`
+
+export const AboutCharacter = styled.p `
+    font-size: 0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #2c2c2c;
+    font-weight: 800;
+    padding-left: 0.5rem;
+    //text-align: center;
+    
+    span {
+        font-weight: 500;
+        color: #ffffff;
     }
 `

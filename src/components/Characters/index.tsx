@@ -25,10 +25,8 @@ const Characters = () => {
     }, [])
     
     const getRickAndMorty = async () => {
-        const response = await RickAndMortyApi.get('api/character')
-        setCharacter(response.data.results)
-        console.log(response.data.results)
-        console.log(character)
+        const response = await RickAndMortyApi.get('api/character');
+        setCharacter(response.data.results);
     }
 
     return (
@@ -45,7 +43,13 @@ const Characters = () => {
                                     src={item.image}
                                 />
 
-                                <S.BoxNameCharacter>{item.name}</S.BoxNameCharacter>
+                                <S.BoxCharacter>
+                                <S.AboutCharacter>nome: <span>{item.name}</span></S.AboutCharacter>
+                                <S.AboutCharacter>gênero: <span>{item.gender}</span></S.AboutCharacter>
+                                <S.AboutCharacter>espécie: <span>{item.species}</span></S.AboutCharacter>
+                                <S.AboutCharacter>status: <span>{item.status}</span></S.AboutCharacter>
+                                <S.AboutCharacter>origem: <span>{item.origin.name}</span></S.AboutCharacter>
+                                </S.BoxCharacter>
                             </S.BoxImg>
                        
                     )}

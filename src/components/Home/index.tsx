@@ -3,9 +3,8 @@ import * as S from './styles'
 import axios from "axios";
 
 //components
-import RickAndMorty from '../../assets/rick-and-morty.png'
-import Characters from "../Characters";
-import Card from '../Card';
+import RickAndMorty from '../../assets/rick-and-morty.png';
+import add from '../../assets/add.png';
 
 const RickAndMortyApi = axios.create({
     baseURL: 'https://rickandmortyapi.com/'
@@ -42,7 +41,6 @@ const Home = () => {
                     item.origin.name.toLowerCase().includes(text.toLowerCase())) {
                     return true;
                 } return false;
-
             }
         })
         setFilter(filtering);
@@ -66,10 +64,14 @@ const Home = () => {
                 key={index}
                 onClick={() => handleCharacterAdd(item.id)}
             >
+                <S.BoxInfoApi>
+
                 <S.BoxCard>
                 <S.Card>
                 <S.CharacterName>{item.name}</S.CharacterName>
-                <S.BtnClose>+</S.BtnClose>
+                <S.Btn
+                            src={add}
+                        />
                 <S.BoxImg>
             <S.CharacterImg
                 src={item.image}
@@ -85,6 +87,8 @@ const Home = () => {
 
                 </S.Card>
                 </S.BoxCard>
+
+                </S.BoxInfoApi>
             </div>
         ))
     }    
@@ -114,7 +118,7 @@ const Home = () => {
                         
                         <S.TextApi>
                             Conheça todos os personagens da série. 
-                            Aproveite para registrar os <span>favoritos</span>
+                            Aproveite para registrar os seus <span>favoritos</span>
                         </S.TextApi> }
                        
                         <S.BoxSearch>

@@ -15,6 +15,10 @@ export const WrapHome = styled.div `
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+
+    @media(max-width: 460px) {
+        width: 95%;
+    }
 `;
 
 export const BoxTitle = styled.div `
@@ -40,15 +44,15 @@ export const BoxInfoApi = styled.div `
     width: 100%;
     max-width: 1000px;
     //min-height: 300px;
-    margin: 0 auto;
+    //margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     @media(max-width: 800px) {
+        width: 300px;
         flex-direction: column-reverse;
     }
-
 `;
     
 export const InfoTextApi = styled.div `
@@ -60,6 +64,11 @@ export const InfoTextApi = styled.div `
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+
+    @media(max-width: 460px) {
+        width: 100%;
+        justify-content: space-evenly;
+    }
 }
 `;
 
@@ -87,6 +96,10 @@ export const BoxImage = styled.figure `
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media(max-width: 460px) {
+        width: 80%;
+    }
 `;
 
 export const RickAndMorty = styled.img `
@@ -95,8 +108,6 @@ export const RickAndMorty = styled.img `
 
 export const BoxSearch = styled.div `
     width: 100%;
-    display: flex;
-    justify-content: center;
     background: rgba(25,25,25,0.93);
 `
 
@@ -104,7 +115,7 @@ export const Search = styled.input `
     width: 80%;
     border: none;
     outline: none;
-    padding: 0.8rem 1rem;
+    padding:  0.8rem 1rem;
     background: transparent;
     font-size: 0.850rem;
     font-family: 'Montserrat', sans-serif;
@@ -117,13 +128,17 @@ export const Search = styled.input `
         font-style: italic;
         font-weight: normal;
       }
+
+      @media(max-width: 460px) {
+          width: 100%;
+      }
 `
 
 // lista dos personagens 
 
 
 export const BoxCard = styled.div `
-    width: 100%;
+    max-width: 300px;
     min-height: 300px;
     display: flex;
     flex-wrap: wrap;
@@ -132,19 +147,18 @@ export const BoxCard = styled.div `
 `
     
 export const Card = styled.div `
-    width: 250px;
+    width: 260px;
     min-height: 250px;
     background: #bdbebd;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     border-radius: 5px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.42);
     transition: 0.3s linear;
     position: relative;
-    margin-bottom: 0.8rem;
-
+    
     transition: 0.2s linear;
 
     &:hover {
@@ -160,23 +174,21 @@ export const CharacterName = styled.p `
     padding: 0.2rem 0;
 `
 
-export const BtnClose = styled.button `
-    width: 25px;
-    height: 25px;
-    color: #FFFF;
-    border-radius: 50%;
+export const Btn = styled.img `
+    width: 20px;
 
     position: absolute;
-    top: 2%;
-    right: 2%;
+    top: 4%;
+    right: 4%;
 
-    background: rgba(0,0,0,0.42);
+    //background: rgba(0,0,0,0.42);
     border: none;
     outline: none;
     cursor: pointer;
+    transition: 0.2s linear;
 
     &:hover{
-        background: green;
+        transform: scale(1.30);
     }
 `
 

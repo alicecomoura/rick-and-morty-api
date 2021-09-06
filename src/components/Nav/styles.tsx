@@ -14,6 +14,10 @@ export const Nav = styled.nav `
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    
+    @media(max-width: 460px) {
+        width: 100%;
+    }
 `;
 
 export const Logo = styled.img `
@@ -23,6 +27,10 @@ export const Logo = styled.img `
     @media(max-width: 900px) {
         width: 20%;
     }
+
+    @media(max-width: 460px) {
+        display: none;
+    }
 `
 
 export const Menu = styled.ul `
@@ -31,6 +39,10 @@ export const Menu = styled.ul `
     justify-content: space-evenly;
     align-items: center;
     list-style: none;
+
+    @media(max-width: 460px) {
+        width: 100%;
+    }
 `;
 
 export const OptionMenu = styled(Link) `
@@ -47,7 +59,7 @@ export const OptionMenu = styled(Link) `
 
     @media(max-width: 900px) {
         transition: 0.6s linear;
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
 `;
 
