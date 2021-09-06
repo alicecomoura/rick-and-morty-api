@@ -1,5 +1,8 @@
 <h1>Rick and Morty API</h1>
 
+![rickandmortyapi](https://user-images.githubusercontent.com/78990348/132221779-4593ee30-9558-4f72-a007-7568c5382985.gif)
+
+
 # Sobre
 
 <h4>Esse projeto consiste em:</h4>
