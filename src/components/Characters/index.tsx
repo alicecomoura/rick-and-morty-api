@@ -33,7 +33,7 @@ const Characters = () => {
         <S.Container>
             <S.WrapHome>
                 <S.TitleAboutInfoPag>Personagens</S.TitleAboutInfoPag>
-                <S.BoxCard>
+                    {character.length ? <S.BoxCard>
                             {character.map((item, index) =>
                             <S.BoxImg
                                 key={index}
@@ -53,7 +53,7 @@ const Characters = () => {
                             </S.BoxImg>
                        
                     )}
-                </S.BoxCard>
+                </S.BoxCard> : <S.Loader></S.Loader>}
             </S.WrapHome>
 
 

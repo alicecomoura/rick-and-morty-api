@@ -22,7 +22,6 @@ export const Nav = styled.nav `
 
 export const Logo = styled.img `
     width: 10%;
-    //height: 50px;
 
     @media(max-width: 900px) {
         width: 20%;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const Container = styled.div `
     width: 100%;
@@ -7,6 +7,8 @@ export const Container = styled.div `
     display: flex;
     align-items: center;
 `;
+
+//lista dos personagens da série
 
 export const WrapHome = styled.div `
     width: 80%;
@@ -36,22 +38,7 @@ export const BoxCard = styled.div `
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-`
-    
-/* export const Card = styled.div `
-    width: 23%;
-    min-height: 350px;
-    margin-bottom: 2rem;
-    background: #bdbebd;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    border-radius: 5px;
-    box-shadow: -1px 5px 23px 11px rgba(0,0,0,0.42);
-    transition: 0.3s linear;
-    position: relative;
-` */
+`;
 
 export const BoxImg = styled.figure `
     width: 130px;
@@ -65,11 +52,11 @@ export const BoxImg = styled.figure `
     margin: 1rem auto;
     position: relative;
     transition: 0.3s;
-    
-    //overflow: hidden;
+
     &:hover{
-        transform: scale(1.1);    }
-`
+        transform: scale(1.1);    
+    }
+`;
 
 export const CharacterImg = styled.img `
     width: 90%;
@@ -83,8 +70,7 @@ export const BoxCharacter = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    //align-items: center;
-   border-radius: 5px;
+    border-radius: 5px;
     background: #93bf85;;
     position: absolute;
     top: -6%;
@@ -96,7 +82,7 @@ export const BoxCharacter = styled.div `
     &:hover{
         opacity: 1;
     }
-`
+`;
 
 export const AboutCharacter = styled.p `
     font-size: 0.7rem;
@@ -110,4 +96,20 @@ export const AboutCharacter = styled.p `
         font-weight: 500;
         color: #ffffff;
     }
-`
+`;
+
+// animação loading
+
+const EffectLoader = keyframes`
+    0%{transform: rotate(0deg)}
+    100%{transform: rotate(360deg)}
+`;
+
+export const Loader = styled.div`
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 16px solid gray;
+    border-top: 16px solid white;
+    animation: ${EffectLoader} 1.5s linear infinite;
+`;

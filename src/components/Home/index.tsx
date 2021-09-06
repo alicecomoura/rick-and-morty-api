@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import * as S from './styles';
-import Slider from 'react-slick';
 import axios from "axios";
 
 //components
-import RickAndMorty from '../../assets/rick-and-morty.png';
 import add from '../../assets/add.png';
 
+// api
 const RickAndMortyApi = axios.create({
     baseURL: 'https://rickandmortyapi.com/'
 });
@@ -33,23 +32,19 @@ const Home = () => {
         getRickAndMorty();
     }, [])
 
-    /* mensagem principal */
-
-    const testando = () => (
-        <S.TextApi>
-            Conheça todos os personagens da série.
-            Aproveite para registrar os <span>favoritos</span>
-        </S.TextApi>
-    )
+    const getRickAndMorty = async () => {
+        const response = await RickAndMortyApi.get('api/character')
+        setCharacter(response.data.results)
+    }
 
      /* mensagem de pessonagem não encontrado */
 
-     const aa = () => (
+     const characterNotFound = () => (
         <S.TextApi>
             Personagem não encontrado
         </S.TextApi>
     )
-
+    /* busca de personagens */
     useEffect(() => {
         const filtering = character.filter(item => {
             if (text !== '') {
@@ -68,27 +63,24 @@ const Home = () => {
         })
         setFilter(filtering);
     }, [text])
-    
-    const getRickAndMorty = async () => {
-        const response = await RickAndMortyApi.get('api/character')
-        setCharacter(response.data.results)
-    }
 
+    /* valor do input search */
     const handleOnChange = (e: any) => setText(e.target.value);
 
+    /* função de adicionar personagens */
     const handleCharacterAdd = (id: number) => {
         const getCharacter = character.filter(item => item.id === id)
         setCharacterAdd(characterAdd.concat(getCharacter));
-        console.log('adddddd')
     }
 
+    /* renderização do map filtrado */
     const renderCardsFilter = () => {
         return filter.map((item, index) => (
             <div>
                 <S.BoxInfoApi>
 
                 <S.BoxCardFilter>
-                <S.Card>
+                <S.CardFilter>
                 <S.CharacterName>{item.name}</S.CharacterName>
                 <S.Btn
                     key={index}
@@ -108,7 +100,7 @@ const Home = () => {
             <S.InfoCharacter><span>origem:</span> {item.origin.name}</S.InfoCharacter>
         </S.BoxInfoCharacter>
 
-                </S.Card>
+                </S.CardFilter>
                 </S.BoxCardFilter>
 
                 </S.BoxInfoApi>
@@ -117,21 +109,12 @@ const Home = () => {
     }    
 
     /* deletar pesronagens */
-
-    const deletandoPersonagens = (index: number) => {
+    const deleteCharacters = (index: number) => {
         const del = characterAdd.filter(item => item.id != index)
         setCharacterAdd(del);
     }
 
-/*     const settings: Settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    } */
-
-
+    /* layout page inicial */
     return (
         <S.Container>
 
@@ -139,6 +122,10 @@ const Home = () => {
                 {/* box title */}
                 <S.BoxTitle>
                     <S.Title>The Rick and Morty API</S.Title>
+                    <S.TextApi>
+                        Conheça todos os personagens da série.
+                        Aproveite para registrar os <span>favoritos!</span>
+                    </S.TextApi>
                 </S.BoxTitle>
 
                 <S.BoxInfoApi>
@@ -148,13 +135,11 @@ const Home = () => {
                    
                     {filter.length ?
 
-                    <S.Cards>
+                    <S.CardsFilter>
                         {renderCardsFilter()}
-                    </S.Cards> :
+                    </S.CardsFilter> :
                         
-                        (check && text.length) > 0 && aa() ||
-                        (check && text === '') && testando()
-
+                        (check && text.length) > 0 && characterNotFound()
                         }
                        
                         <S.BoxSearch>
@@ -165,53 +150,40 @@ const Home = () => {
                     />
                 </S.BoxSearch>
 
-                    <S.ListFav>
-                        + Minha lista de favoritos
-                    </S.ListFav>
-
                     </S.InfoTextApi>
-
-                    {/* box img rick and morty */}
-                    <S.BoxImage>
-                        <S.RickAndMorty
-                            src={RickAndMorty}
-                        />
-                    </S.BoxImage>
                 </S.BoxInfoApi>
 
             </S.WrapHome>
 
             <S.WrapFav>
-                {/* box cards */}
-
-                <S.BoxCardFilter>
+                <S.ListFav>
+                        Meus personagens favoritos
+                    </S.ListFav>
+                    {/* renderização dos personagens favoritos */}
+                <S.BoxCardFav>
                         {characterAdd.map((item, index) =>
-                            <S.Card
+                            <S.CardFav
                                 key={index}
                             >
-                                <S.CharacterName>{item.name}</S.CharacterName>
 
-                                <S.BtnClose
-                                    onClick={() => deletandoPersonagens(item.id)}
-                                >
-                                    x</S.BtnClose>
-
+                                
                                 <S.BoxImg>
-                                    <S.CharacterImg
+                                    <S.CharacterImgFav
                                         src={item.image}
                                     />
                                 </S.BoxImg>
 
-                                <S.BoxInfoCharacter>
-                                    <S.InfoCharacter><span>estado:</span> {item.status}</S.InfoCharacter>
-                                    <S.InfoCharacter><span>espécie:</span> {item.species}</S.InfoCharacter>
-                                    <S.InfoCharacter><span>genêro:</span> {item.gender}</S.InfoCharacter>
-                                    <S.InfoCharacter><span>origem:</span> {item.origin.name}</S.InfoCharacter>
-                                </S.BoxInfoCharacter>
+                                <S.BtnClose
+                                    onClick={() => deleteCharacters(item.id)}
+                                >
+                                    x</S.BtnClose>
 
-                            </S.Card>
+
+                                <S.CharacterName>{item.name}</S.CharacterName>
+
+                            </S.CardFav>
                         )}
-                </S.BoxCardFilter>
+                </S.BoxCardFav>
 
             </S.WrapFav>
 

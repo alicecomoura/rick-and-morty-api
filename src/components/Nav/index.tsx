@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     BrowserRouter as Router,
-    Link,
     Route,
     Switch
 } from 'react-router-dom';
@@ -40,10 +39,7 @@ const Nav: React.FC<NavProps> = (props) => {
                     <Home />
                 </Route>
             </Switch>
-
         </Router>
-
-
     )
 }
 
