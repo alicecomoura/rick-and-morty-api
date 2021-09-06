@@ -1,6 +1,7 @@
 <h1>Rick and Morty API</h1>
 
-![rickandmortyapi](https://user-images.githubusercontent.com/78990348/132221779-4593ee30-9558-4f72-a007-7568c5382985.gif)
+![rickandmortyapi](https://user-images.githubusercontent.com/78990348/132222231-9524f033-ad17-44e6-b7b2-1023298866f0.gif)
+
 
 
 # Sobre
