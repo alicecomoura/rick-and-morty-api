@@ -79,8 +79,8 @@ const Home = () => {
     const handleCharacterAdd = (id: number) => {
         const getCharacter = character.filter(item => item.id === id)
         setCharacterAdd(characterAdd.concat(getCharacter));
-        console.log('adiconando')
-    };
+        console.log('adddddd')
+    }
 
     const renderCardsFilter = () => {
         return filter.map((item, index) => (
@@ -185,7 +185,6 @@ const Home = () => {
                 {/* box cards */}
 
                 <S.BoxCardFilter>
-                    <Slider /* {...settings} */>
                         {characterAdd.map((item, index) =>
                             <S.Card
                                 key={index}
@@ -212,7 +211,6 @@ const Home = () => {
 
                             </S.Card>
                         )}
-                    </Slider>
                 </S.BoxCardFilter>
 
             </S.WrapFav>
