@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import * as S from './styles'
+import * as S from './styles';
+import Slider from 'react-slick';
 import axios from "axios";
 
 //components
@@ -26,10 +27,28 @@ const Home = () => {
     const [characterAdd, setCharacterAdd] = useState<CharacterProps[]>([]);
     const [filter, setFilter] = useState<CharacterProps[]>([]);
     const [text, setText] = useState<string>('');
+    const [check, setCheck] = useState<boolean>(false);
 
     useEffect(() => {
         getRickAndMorty();
     }, [])
+
+    /* mensagem principal */
+
+    const testando = () => (
+        <S.TextApi>
+            Conheça todos os personagens da série.
+            Aproveite para registrar os <span>favoritos</span>
+        </S.TextApi>
+    )
+
+     /* mensagem de pessonagem não encontrado */
+
+     const aa = () => (
+        <S.TextApi>
+            Personagem não encontrado
+        </S.TextApi>
+    )
 
     useEffect(() => {
         const filtering = character.filter(item => {
@@ -40,7 +59,11 @@ const Home = () => {
                     item.status.toLowerCase().includes(text.toLowerCase()) ||
                     item.origin.name.toLowerCase().includes(text.toLowerCase())) {
                     return true;
-                } return false;
+                } else {
+                    setCheck(true);
+                    return false;
+                } 
+                    
             }
         })
         setFilter(filtering);
@@ -56,27 +79,27 @@ const Home = () => {
     const handleCharacterAdd = (id: number) => {
         const getCharacter = character.filter(item => item.id === id)
         setCharacterAdd(characterAdd.concat(getCharacter));
+        console.log('adiconando')
     };
 
     const renderCardsFilter = () => {
         return filter.map((item, index) => (
-            <div
-                key={index}
-                onClick={() => handleCharacterAdd(item.id)}
-            >
+            <div>
                 <S.BoxInfoApi>
 
-                <S.BoxCard>
+                <S.BoxCardFilter>
                 <S.Card>
                 <S.CharacterName>{item.name}</S.CharacterName>
                 <S.Btn
-                            src={add}
-                        />
-                <S.BoxImg>
-            <S.CharacterImg
+                    key={index}
+                    onClick={() => handleCharacterAdd(item.id)}
+                    src={add}
+                />
+                <S.BoxImgFilter>
+            <S.CharacterImgFilter
                 src={item.image}
             />
-        </S.BoxImg>
+        </S.BoxImgFilter>
 
         <S.BoxInfoCharacter>
             <S.InfoCharacter><span>estado:</span> {item.status}</S.InfoCharacter>
@@ -86,15 +109,28 @@ const Home = () => {
         </S.BoxInfoCharacter>
 
                 </S.Card>
-                </S.BoxCard>
+                </S.BoxCardFilter>
 
                 </S.BoxInfoApi>
             </div>
         ))
     }    
 
-    if(characterAdd.length !== 0)
-        localStorage.setItem('CharacterFav', JSON.stringify(characterAdd));
+    /* deletar pesronagens */
+
+    const deletandoPersonagens = (index: number) => {
+        const del = characterAdd.filter(item => item.id != index)
+        setCharacterAdd(del);
+    }
+
+/*     const settings: Settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    } */
+
 
     return (
         <S.Container>
@@ -116,18 +152,22 @@ const Home = () => {
                         {renderCardsFilter()}
                     </S.Cards> :
                         
-                        <S.TextApi>
-                            Conheça todos os personagens da série. 
-                            Aproveite para registrar os seus <span>favoritos</span>
-                        </S.TextApi> }
+                        (check && text.length) > 0 && aa() ||
+                        (check && text === '') && testando()
+
+                        }
                        
                         <S.BoxSearch>
                     <S.Search
                         placeholder="Pesquise seu personagem: nome, gênero, espécie, status..."
                         onChange={(ev) => handleOnChange(ev)}
-                                value={text}
+                        value={text}
                     />
                 </S.BoxSearch>
+
+                    <S.ListFav>
+                        + Minha lista de favoritos
+                    </S.ListFav>
 
                     </S.InfoTextApi>
 
@@ -140,6 +180,43 @@ const Home = () => {
                 </S.BoxInfoApi>
 
             </S.WrapHome>
+
+            <S.WrapFav>
+                {/* box cards */}
+
+                <S.BoxCardFilter>
+                    <Slider /* {...settings} */>
+                        {characterAdd.map((item, index) =>
+                            <S.Card
+                                key={index}
+                            >
+                                <S.CharacterName>{item.name}</S.CharacterName>
+
+                                <S.BtnClose
+                                    onClick={() => deletandoPersonagens(item.id)}
+                                >
+                                    x</S.BtnClose>
+
+                                <S.BoxImg>
+                                    <S.CharacterImg
+                                        src={item.image}
+                                    />
+                                </S.BoxImg>
+
+                                <S.BoxInfoCharacter>
+                                    <S.InfoCharacter><span>estado:</span> {item.status}</S.InfoCharacter>
+                                    <S.InfoCharacter><span>espécie:</span> {item.species}</S.InfoCharacter>
+                                    <S.InfoCharacter><span>genêro:</span> {item.gender}</S.InfoCharacter>
+                                    <S.InfoCharacter><span>origem:</span> {item.origin.name}</S.InfoCharacter>
+                                </S.BoxInfoCharacter>
+
+                            </S.Card>
+                        )}
+                    </Slider>
+                </S.BoxCardFilter>
+
+            </S.WrapFav>
+
 
 
         </S.Container>

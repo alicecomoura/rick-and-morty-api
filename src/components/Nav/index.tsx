@@ -27,21 +27,11 @@ const Nav: React.FC<NavProps> = (props) => {
                     <S.Menu>
                         <S.OptionMenu to="/" >início</S.OptionMenu>
                         <S.OptionMenu to="/personagens" >personagens</S.OptionMenu>
-                        <S.OptionMenu to="/pesquisar" >pesquisar</S.OptionMenu>
-                        <S.OptionMenu to="/minhalista" >meus favoritos</S.OptionMenu>
                     </S.Menu>
                 </S.Nav>
             </S.Container>
 
             <Switch>
-                <Route path="/minhalista">
-                    <Favorites />
-                </Route>
-
-                <Route path="/pesquisar">
-                    <Home />
-                </Route>
-
                 <Route path="/personagens">
                     <Characters />
                 </Route>

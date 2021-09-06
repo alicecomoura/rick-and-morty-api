@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div `
     width: 100%;
     min-height: calc(100vh - 4rem);
     display: flex;
+    flex-direction: column;
     align-items: center;
 `;
 
@@ -58,7 +59,7 @@ export const BoxInfoApi = styled.div `
 export const InfoTextApi = styled.div `
     width: 55%;
     max-width: 1000px;
-    min-height: 250px;
+    min-height: 300px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -80,7 +81,7 @@ export const TextApi = styled.h2 `
     color: #FFFF;
 
     span {
-        font-size: 2.9rem;
+        font-size: 2rem;
         font-weight: 800;
         color: #0fb0ca;
         text-shadow: 0 1px 1px black;
@@ -134,10 +135,12 @@ export const Search = styled.input `
       }
 `
 
-// lista dos personagens 
+// lista dos personagens FAVORITOS
 
 
-export const BoxCard = styled.div `
+
+
+export const BoxCardFilter = styled.div`
     max-width: 300px;
     min-height: 300px;
     display: flex;
@@ -192,7 +195,7 @@ export const Btn = styled.img `
     }
 `
 
-export const BoxImg = styled.figure `
+export const BoxImgFilter = styled.figure `
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -204,7 +207,7 @@ export const BoxImg = styled.figure `
     margin: 0 auto;
 `
 
-export const CharacterImg = styled.img `
+export const CharacterImgFilter = styled.img `
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -249,3 +252,90 @@ align-items: center;
     align-items: flex-start;
 }
 `
+export const ListFav = styled.div `
+    display: flex;
+    width: 100%;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2rem;
+    color: #FFFF;
+`
+export const TitleAboutInfoPag = styled.h2`
+    font-family: 'Rubik', sans-serif;
+    font-size: 3rem;
+    color: #FFFF;
+    text-align: center;
+    text-shadow: 2px 2px 5px #000;
+    margin: 1rem;
+`
+
+// lista dos personagens 
+
+export const WrapFav = styled.div ``
+
+export const Slider = styled.div ``
+
+export const BoxImg = styled.figure`
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 1rem auto;
+    position: relative;
+    transition: 0.3s;
+
+    &:hover{
+        transform: scale(1.1);    }
+`
+
+export const CharacterImg = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`;
+
+export const BoxNameCharacter = styled.div`
+    width: 140px;
+    height: 140px;
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    background: #88c445;;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: 0.5s linear;
+
+    cursor: pointer;
+
+    &:hover{
+        opacity: 1;
+    }
+`
+
+export const BtnClose = styled.div``
+
+
+const EffectLoader = keyframes`
+    0%{transform: rotate(0deg)}
+    100%{transform: rotate(360deg)}
+`;
+
+export const Loader = styled.div`
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 16px solid gray;
+    border-top: 16px solid white;
+    animation: ${EffectLoader} 1.5s linear infinite;
+`;
