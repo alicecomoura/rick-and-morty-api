@@ -7,15 +7,15 @@
 # Sobre
 
 <h4>Esse projeto consiste em:</h4>
-»<p>Consumo da API Rick and Morty</p>;
-»<p>Mapeamento dos personagens da série com os principais dados sobre eles</p>;
-»<p>Busca dos personagens por nome, gênero, espécie ou status</p>;
-»<p>Mensagem se o personagem não existir na série</p>;
-»<p>Função e adicionar e remover da lista de personagens favoritos</p>;
-»<p>Versão mobile</p>.
+<p>Consumo da API Rick and Morty</p>;
+<p>Mapeamento dos personagens da série com os principais dados sobre eles</p>
+<p>Busca dos personagens por nome, gênero, espécie ou status</p>
+<p>Mensagem se o personagem não existir na série</p>
+<p>Função e adicionar e remover da lista de personagens favoritos</p>
+<p>Versão mobile</p>
 
 # Tecnologia 
 
-»<p>TypeScript</p>
-»<p>React</p>
-»<p>Styled-components</p>
+<p>TypeScript</p>
+<p>React</p>
+<p>Styled-components</p>
