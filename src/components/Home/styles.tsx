@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
@@ -115,9 +115,6 @@ export const Search = styled.input`
         font-weight: normal;
       }
 
-      @media(max-width: 460px) {
-          width: 100%;
-      }
 `;
 
 // filter cards
@@ -128,6 +125,17 @@ export const BoxCardFilter = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+
+    @media(max-width: 800px) {
+        max-width: 1000px;
+    }
+`;
+
+export const TextNotFound = styled.h3 `
+      font-size: 1.8rem;
+      color: gold;
+      text-align: center;
+      margin-bottom: 0.5rem;
 `;
 
 export const CardFilter = styled.div`
@@ -143,11 +151,14 @@ export const CardFilter = styled.div`
     transition: 0.3s linear;
     position: relative;
     margin-bottom: 0.8rem;
-
     transition: 0.2s linear;
 
     &:hover {
         transform: scale(1.025);
+    }
+
+    @media(max-width: 800px) {
+        width: 150px;
     }
 `;
 
@@ -206,6 +217,7 @@ export const CharacterImgFilter = styled.img`
 
 export const InfoCharacter = styled.p`
     font-size: 0.8rem;
+    padding-left: 0.5rem;
 
     span{
         font-weight: 700;
@@ -254,6 +266,11 @@ export const ListFav = styled.div`
     font-size: 1.2rem;
     color: #FFFF;
     margin-top: 2rem;
+
+    @media(max-width: 460px) {
+        width: 100%;
+        text-align: center;
+    }
 `;
 
 export const BoxCardFav = styled.div`
@@ -263,6 +280,13 @@ export const BoxCardFav = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    
+    @media(max-width: 460px) {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+    }
 `;
 
 export const CardFav = styled.div`

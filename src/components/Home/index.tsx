@@ -39,9 +39,9 @@ const Home = () => {
 
     /* mensagem de personagem não encontrado */
     const characterNotFound = () => (
-        <S.TextApi>
-            Personagem não encontrado
-        </S.TextApi>
+        <S.TextNotFound>
+            Esse personagem não existe...
+        </S.TextNotFound>
     );
 
     /* busca de personagens */
