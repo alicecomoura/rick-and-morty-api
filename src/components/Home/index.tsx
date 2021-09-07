@@ -18,7 +18,7 @@ interface CharacterProps {
     species: string,
     gender: string,
     origin: { name: string }
-}
+};
 
 const Home = () => {
 
@@ -35,17 +35,18 @@ const Home = () => {
     const getRickAndMorty = async () => {
         const response = await RickAndMortyApi.get('api/character')
         setCharacter(response.data.results)
-    }
+    };
 
-     /* mensagem de pessonagem não encontrado */
-
-     const characterNotFound = () => (
+    /* mensagem de personagem não encontrado */
+    const characterNotFound = () => (
         <S.TextApi>
             Personagem não encontrado
         </S.TextApi>
-    )
+    );
+
     /* busca de personagens */
     useEffect(() => {
+        // eslint-disable-next-line array-callback-return
         const filtering = character.filter(item => {
             if (text !== '') {
                 if (item.name.toLowerCase().includes(text.toLowerCase()) ||
@@ -57,12 +58,12 @@ const Home = () => {
                 } else {
                     setCheck(true);
                     return false;
-                } 
-                    
-            }
+                };
+
+            };
         })
         setFilter(filtering);
-    }, [text])
+    }, [character, text]);
 
     /* valor do input search */
     const handleOnChange = (e: any) => setText(e.target.value);
@@ -71,55 +72,52 @@ const Home = () => {
     const handleCharacterAdd = (id: number) => {
         const getCharacter = character.filter(item => item.id === id)
         setCharacterAdd(characterAdd.concat(getCharacter));
-    }
+    };
 
-    /* renderização do map filtrado */
+    /* filtro dos personagens pesquisados */
     const renderCardsFilter = () => {
         return filter.map((item, index) => (
             <div>
                 <S.BoxInfoApi>
+                    <S.BoxCardFilter>
+                        <S.CardFilter>
+                            <S.CharacterName>{item.name}</S.CharacterName>
+                            <S.Btn
+                                key={index}
+                                onClick={() => handleCharacterAdd(item.id)}
+                                src={add}
+                            />
+                            <S.BoxImgFilter>
+                                <S.CharacterImgFilter
+                                    src={item.image}
+                                />
+                            </S.BoxImgFilter>
 
-                <S.BoxCardFilter>
-                <S.CardFilter>
-                <S.CharacterName>{item.name}</S.CharacterName>
-                <S.Btn
-                    key={index}
-                    onClick={() => handleCharacterAdd(item.id)}
-                    src={add}
-                />
-                <S.BoxImgFilter>
-            <S.CharacterImgFilter
-                src={item.image}
-            />
-        </S.BoxImgFilter>
+                            <S.BoxInfoCharacter>
+                                <S.InfoCharacter><span>estado:</span> {item.status}</S.InfoCharacter>
+                                <S.InfoCharacter><span>espécie:</span> {item.species}</S.InfoCharacter>
+                                <S.InfoCharacter><span>genêro:</span> {item.gender}</S.InfoCharacter>
+                                <S.InfoCharacter><span>origem:</span> {item.origin.name}</S.InfoCharacter>
+                            </S.BoxInfoCharacter>
 
-        <S.BoxInfoCharacter>
-            <S.InfoCharacter><span>estado:</span> {item.status}</S.InfoCharacter>
-            <S.InfoCharacter><span>espécie:</span> {item.species}</S.InfoCharacter>
-            <S.InfoCharacter><span>genêro:</span> {item.gender}</S.InfoCharacter>
-            <S.InfoCharacter><span>origem:</span> {item.origin.name}</S.InfoCharacter>
-        </S.BoxInfoCharacter>
-
-                </S.CardFilter>
-                </S.BoxCardFilter>
-
+                        </S.CardFilter>
+                    </S.BoxCardFilter>
                 </S.BoxInfoApi>
             </div>
         ))
-    }    
+    };
 
     /* deletar pesronagens */
     const deleteCharacters = (index: number) => {
-        const del = characterAdd.filter(item => item.id != index)
+        const del = characterAdd.filter(item => item.id !== index)
         setCharacterAdd(del);
-    }
+    };
 
     /* layout page inicial */
     return (
         <S.Container>
-
             <S.WrapHome>
-                {/* box title */}
+                {/* box title/informação sobre a aplicação */}
                 <S.BoxTitle>
                     <S.Title>The Rick and Morty API</S.Title>
                     <S.TextApi>
@@ -130,67 +128,53 @@ const Home = () => {
 
                 <S.BoxInfoApi>
 
-                    {/* box card text */}
+                    {/* renderização do resultado da pesquisa dos personagens */}
                     <S.InfoTextApi>
-                   
-                    {filter.length ?
+                        {filter.length ?
+                            <S.CardsFilter>
+                                {renderCardsFilter()}
+                            </S.CardsFilter> :
 
-                    <S.CardsFilter>
-                        {renderCardsFilter()}
-                    </S.CardsFilter> :
-                        
-                        (check && text.length) > 0 && characterNotFound()
+                            (check && text.length) > 0 && characterNotFound()
                         }
-                       
                         <S.BoxSearch>
-                    <S.Search
-                        placeholder="Pesquise seu personagem: nome, gênero, espécie, status..."
-                        onChange={(ev) => handleOnChange(ev)}
-                        value={text}
-                    />
-                </S.BoxSearch>
-
+                            <S.Search
+                                placeholder="Pesquise seu personagem: nome, gênero, espécie, status..."
+                                onChange={(ev) => handleOnChange(ev)}
+                                value={text}
+                            />
+                        </S.BoxSearch>
                     </S.InfoTextApi>
                 </S.BoxInfoApi>
-
             </S.WrapHome>
 
             <S.WrapFav>
                 <S.ListFav>
-                        Meus personagens favoritos
-                    </S.ListFav>
-                    {/* renderização dos personagens favoritos */}
+                    Meus personagens favoritos
+                </S.ListFav>
+
+                {/* renderização dos personagens favoritos */}
                 <S.BoxCardFav>
-                        {characterAdd.map((item, index) =>
-                            <S.CardFav
-                                key={index}
+                    {characterAdd.map((item, index) =>
+                        <S.CardFav
+                            key={index}
+                        >
+                            <S.BoxImg>
+                                <S.CharacterImgFav
+                                    src={item.image}
+                                />
+                            </S.BoxImg>
+                            <S.BtnClose
+                                onClick={() => deleteCharacters(item.id)}
                             >
-
-                                
-                                <S.BoxImg>
-                                    <S.CharacterImgFav
-                                        src={item.image}
-                                    />
-                                </S.BoxImg>
-
-                                <S.BtnClose
-                                    onClick={() => deleteCharacters(item.id)}
-                                >
-                                    x</S.BtnClose>
-
-
-                                <S.CharacterName>{item.name}</S.CharacterName>
-
-                            </S.CardFav>
-                        )}
+                                x</S.BtnClose>
+                            <S.CharacterName>{item.name}</S.CharacterName>
+                        </S.CardFav>
+                    )}
                 </S.BoxCardFav>
-
             </S.WrapFav>
-
-
-
         </S.Container>
     )
-}
+};
 
 export default Home;

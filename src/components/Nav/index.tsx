@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
@@ -8,18 +7,14 @@ import {
 import * as S from './styles';
 
 //components
-import logo from '../../assets/logo.png'
-import Favorites from '../Favorites'
-import Home from '../Home'
-import Characters from '../Characters'
+import logo from '../../assets/logo.png';
+import Home from '../Home';
+import Characters from '../Characters';
 
-interface NavProps {
-    OptionMenu?: string,
-}
-
-const Nav: React.FC<NavProps> = (props) => {
+const Nav = () => {
     return (
         <Router>
+            
             <S.Container>
                 <S.Nav>
                     <S.Logo src={logo} />
@@ -39,8 +34,9 @@ const Nav: React.FC<NavProps> = (props) => {
                     <Home />
                 </Route>
             </Switch>
+
         </Router>
     )
-}
+};
 
 export default Nav;

@@ -30,7 +30,7 @@ export const Logo = styled.img `
     @media(max-width: 460px) {
         display: none;
     }
-`
+`;
 
 export const Menu = styled.ul `
     width: 60%;
